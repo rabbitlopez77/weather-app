@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import './App.css'
 import Temperatures from './components/tempuatures';
 import SunLocation from './components/SunLocation';
+import RainInfo from './components/RainInfo';
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, getDocs } from "firebase/firestore"
 
@@ -92,7 +93,8 @@ if (error) {
           {data ? <SunLocation sunrise={data.sys.sunrise} sunset={data.sys.sunset}/> : 'Loading...'}
         </div>
         <div className='more-info-table-item'>
-          <h2>this is a placeholder</h2>
+          <h2>Rain Info</h2>
+          {data ? <RainInfo rainDescription={data.weather[0].main}/> : 'Loading...'}
         </div>
         <div className='more-info-table-item'>
           <h2>this is a placeholder 2</h2>
